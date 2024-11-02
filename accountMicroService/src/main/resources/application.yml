@@ -1,0 +1,19 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: Banking
+  application:
+    name: Account-Service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
