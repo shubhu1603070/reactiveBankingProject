@@ -1,0 +1,42 @@
+jwt :
+  password:
+    encoder:
+      secret: oZr417KU7ipPoCCGY0-cPcGu0PpT1_aG9o-BD1KcnN3BpZPrLcNKgcF9QXXJwrY50Whd7Ij51t45oD0ctn-Vo032uFoMtnNzvzpOFq
+      iteration: 33
+      keylength: 256
+  secret : qgFWGK3rApiyCLQjdSZVojTXC4YG4vCZoXMSSgAbI/9sSzu5esKmVr01wY0ZwTomVMd+GM20aBmRDNP3cV2QQg==
+  expiration: 28800
+
+application :
+  base :
+    url : http://localhost:8083/
+
+app:
+  public_routes: /login,/signup,/public/**,/version,/status,/actuator/**
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone : http://localhost:8761/eureka
+
+
+spring:
+  cloud:
+    gateway:
+      routes[0]:
+        id: user-service
+        uri: lb://USER-SERVICE
+        predicates:
+          - Path=/user/api/v1/**
+      routes[1]:
+        id: account-service
+        uri: lb://ACCOUNT-SERVICE
+        predicates:
+          - Path=/account/api/v1/**
+  application:
+    name: Api-Gateway
