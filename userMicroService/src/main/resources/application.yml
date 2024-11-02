@@ -1,0 +1,31 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: User-Service
+
+  data:
+    mongodb:
+      database: Banking
+      host: localhost
+      port: 27017
+
+application :
+  base :
+    url : http://localhost:8081/
+
+
+jwt :
+  password:
+    encoder:
+      secret: oZr417KU7ipPoCCGY0-cPcGu0PpT1_aG9o-BD1KcnN3BpZPrLcNKgcF9QXXJwrY50Whd7Ij51t45oD0ctn-Vo032uFoMtnNzvzpOFq
+      iteration: 33
+      keylength: 256
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
